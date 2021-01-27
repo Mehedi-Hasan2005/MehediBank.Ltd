@@ -36,7 +36,7 @@
            <div class="col-md-4 Deposit">
            <div class="Deposit">
             <h5>Deposit</h5>
-            <h2>$00</h2>
+            <h2>$ <span id="current-depo">00</span></h2>
            </div>
 
            </div>
@@ -47,7 +47,7 @@
            <div class="col-md-4 Balances">
           <div class="Balances">
             <h5>Balances</h5>
-            <h2>$1500</h2>
+            <h2>$<span id="currentBlance">1500</span></h2>
           </div>
            </div>
 
@@ -57,9 +57,11 @@
            <div class="col-md-6">
                <div class="submit-area">
                 <h4>Deposit</h4>
-                <input type="text" class="form-control" 
+                <input id="depo-Amount" type="text" class="form-control" 
                 
-            placeholder="$Amount You Went To Deposit  Bro"><button class="btn-success">Deposit</button>
+            placeholder="$Amount You Went To Deposit  Bro" >
+            <button class="btn-success" id="add-depose">Deposit</button>
+
                </div>
            </div>
            <div class="col-md-6">
@@ -72,6 +74,7 @@
        </div>
 
   <script>
+      //Login Button event handler
       const loginBtn = document.getElementById('login');
 
       loginBtn.addEventListener("click", function(){
@@ -86,6 +89,32 @@
 
 
       });
+
+      // Deposit button even handlers
+      const added = document.getElementById('add-depose');
+
+      added.addEventListener('click', function(){
+         const depositAmount = document.getElementById('depo-Amount').value;
+         const decoNumber = parseFloat(depositAmount);
+
+         const currentness = document.getElementById('current-depo').innerText;
+         const currentnessdeponumb = parseFloat(currentness);
+         const totalDeposit = decoNumber + currentnessdeponumb;
+
+         document.getElementById('current-depo'). innerText = totalDeposit;
+
+        const currentBlance = document.getElementById('currentBlance').innerText;
+        const currentBlancherNumber = parseFloat(currentBlance);
+        const totalBlance =  decoNumber   + currentBlancherNumber;
+
+        document.getElementById("currentBlance").innerText = totalBlance;
+
+
+         document.getElementById('depo-Amount').value = '';
+
+      })
+
+      
 
      
 
